@@ -1,4 +1,5 @@
 import flatpickr from 'flatpickr';
+import Notiflix from 'notiflix';
 import 'flatpickr/dist/flatpickr.min.css';
 
 const refs = {
@@ -44,12 +45,18 @@ function deadLineTimer() {
 
   const intervalId = setInterval(() => {
     if (timerMS <= 1000) {
+      Notiflix.Report.success(
+        'Notiflix Success',
+        '"Do not try to become a person of success but try to become a person of value." <br/><br/>- Albert Einstein',
+        'Okay',
+      );
       clearInterval(intervalId);
       return;
     }
 
     const currentTime = Date.now();
     timerMS = chosenTime - currentTime;
+
     createTimeMarkup(convertMs(timerMS));
   }, 1000);
 }
