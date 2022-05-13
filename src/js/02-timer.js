@@ -43,14 +43,14 @@ function deadLineTimer() {
   const chosenTime = refs.dataPicker._flatpickr.latestSelectedDateObj;
 
   const intervalId = setInterval(() => {
-    if (timerMS <= 0) {
+    if (timerMS <= 1) {
       clearInterval(intervalId);
       return;
     }
 
     const currentTime = Date.now();
     timerMS = chosenTime - currentTime;
-    console.log(convertMs(timerMS));
+    createTimeMarkup(convertMs(timerMS));
   }, 1000);
 }
 
@@ -70,4 +70,11 @@ function convertMs(ms) {
 
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
+}
+
+function createTimeMarkup({ seconds, minutes, hours, days }) {
+  refs.daysEl.textContent = days;
+  refs.hoursEl.textContent = hours;
+  refs.minutesEl.textContent = minutes;
+  refs.secondsEl.textContent = seconds;
 }
