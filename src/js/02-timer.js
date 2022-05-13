@@ -43,7 +43,7 @@ function deadLineTimer() {
   const chosenTime = refs.dataPicker._flatpickr.latestSelectedDateObj;
 
   const intervalId = setInterval(() => {
-    if (timerMS <= 1) {
+    if (timerMS <= 1000) {
       clearInterval(intervalId);
       return;
     }
