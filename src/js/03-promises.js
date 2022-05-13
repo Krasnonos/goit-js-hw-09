@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const refs = {
   formEl: document.querySelector('.form'),
   delayEl: document.querySelector('input[name="delay"]'),
@@ -17,10 +19,10 @@ function onSumbitForm(e) {
   for (let i = 1; i <= amountValue; i += 1) {
     createPromise(i, firstDylayValue)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
 
     firstDylayValue += nextDelayValue;
