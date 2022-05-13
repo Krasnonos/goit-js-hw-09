@@ -1,1 +1,0 @@
-{"version":3,"sources":["js/02-timer.js"],"names":["a","b"],"mappings":";AAAA,MAAMA,EAAI,EACJC,EAAI","file":"02-timer.613e5363.js","sourceRoot":"../src","sourcesContent":["const a = 5;\nconst b = 3;\n"]}
