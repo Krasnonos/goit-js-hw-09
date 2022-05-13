@@ -11,6 +11,7 @@ const refs = {
 };
 
 refs.submitBtn.disabled = true;
+refs.submitBtn.addEventListener('click', deadLineTimer);
 
 const options = {
   enableTime: true,
@@ -29,16 +30,25 @@ function chekCurrentTime(selectedDates) {
   const diference = selectedDates - currentTime;
 
   if (diference <= 0) {
+    refs.submitBtn.disabled = true;
     alert('Please choose a date in the future');
     return;
   }
+
   refs.submitBtn.disabled = false;
-  deadLineTimer(selectedDates);
 }
 
-function deadLineTimer(seconds) {
-  setInterval(() => {
+function deadLineTimer() {
+  let timerMS;
+  const chosenTime = refs.dataPicker._flatpickr.latestSelectedDateObj;
+
+  const intervalId = setInterval(() => {
+    if (timerMS <= 0) {
+      clearInterval(intervalId);
+      return;
+    }
+
     const currentTime = Date.now();
-    console.log(seconds - currentTime);
+    timerMS = chosenTime - currentTime;
   }, 1000);
 }
